@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  text-align: left;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -9,7 +10,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,11 +23,42 @@
   color: #61dafb;
 }
 
+.BuildingContainer {
+
+  width: 1027px;
+  background-size: 1027px 1324px;
+}
+.Building {
+  position:relative;
+
+}
+
+.ElevatorContainer {
+  position:absolute;
+  top: 265px;
+  left: 229px;
+  width: 290px;
+  height: 966px;
+}
+
+.Elevator {
+  position: absolute;
+  left: -24px;
+  bottom: 0;
+  width: 310px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes elevatorMoving {
+  from {
+
   }
 }
