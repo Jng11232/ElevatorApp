@@ -43,20 +43,20 @@
 
 .Elevator {
   position: absolute;
-  left: -24px;
+  left: 200px;
   width: 310px;
 }
 
 .Form1{
   position: absolute;
-  top: 60px;
+  top: 100px;
   width: 300px;
   height: 500px;
   left: 1100px;
 }
 .Form2{
   position: absolute;
-  top: 560px;
+  top: 660px;
   width: 300px;
   height: 500px;
   left: 1100px;
@@ -64,14 +64,14 @@
 .button {
   background-color:#0582CA ;
   border: 30px 40px;
-  height: 200px;
+  height: 150px;
   width: 300px;
   color: white;
   padding: 30px 45px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 40px;
+  font-size: 35px;
   font: arial;
 }
 

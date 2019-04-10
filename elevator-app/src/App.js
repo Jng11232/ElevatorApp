@@ -3,12 +3,14 @@ import logo from './logo.svg';
 import Clock from './Clock';
 import building from './image/building Environment.png';
 import Elevator from './ElevatorClass';
+import elevator2 from './image/transparentElevator2.png';
 
 import OnePersonElevator from './ElevatorOne';
 import TwoPersonElevator from './ElevatorTwo';
 import ThreePersonElevator from './ElevatorThree';
 import './App.css';
 var elevatorHeight = {
+
   bottom: '0px'
 };
 class App extends Component {
@@ -35,7 +37,9 @@ class App extends Component {
       // speed: 0.0,
     };
 
-    this.updateYElevator = this.updateYElevator.bind(this);
+    this.updateYElevator1 = this.updateYElevator1.bind(this);
+    this.updateYElevator2 = this.updateYElevator2.bind(this);
+    this.updateYElevator3 = this.updateYElevator3.bind(this);
     this.gotoFirstFloor = this.gotoFirstFloor.bind(this);
     this.gotoSecondFloor = this.gotoSecondFloor.bind(this);
 
@@ -50,23 +54,96 @@ class App extends Component {
   //   ((0.01592*(Math.pow(s,3))+16.46(Math.pow(s,2))+(535.1 * s) + 86.2)/((Math.pow(s,5))+2.307*(Math)))
   // }
   // <img src={elevator} className="App-logo" alt="logo" />
-  updateYElevator(){
+  updateYElevator1(){
     this.setState({elevatorTime: this.state.elevatorTime + 1})
-    if(this.state.elevatorTime < 600 && this.state.bottom < 510 && this.state.goUp === true) {
-    this.setState({bottom: this.state.bottom + 1});
+    if(this.state.elevatorTime < 301 && this.state.bottom < 510 && this.state.goUp === true) {
+    this.setState({bottom: this.state.bottom +((0.16)*(this.state.elevatorTime/100)*(this.state.elevatorTime/100))});
+      console.log(((0.16)*(this.state.elevatorTime/100)*(this.state.elevatorTime/100)))
       var theHeight = this.state.bottom;
       elevatorHeight = {
         bottom: theHeight+'px'
       };
     };
-    if(this.state.elevatorTime < 600 && this.state.bottom > -10 && this.state.goUp === false) {
-      this.setState({bottom: this.state.bottom - 1});
+    if(this.state.elevatorTime > 299 && this.state.elevatorTime < 401 && this.state.bottom < 510 && this.state.goUp === true) {
+    this.setState({bottom: this.state.bottom +(this.state.elevatorTime/100) - 1.850});
+    console.log((this.state.elevatorTime/100) - 1.850 + "part 2" + this.state.elevatorTime)
+      var theHeight = this.state.bottom;
+      elevatorHeight = {
+        bottom: theHeight+'px'
+      };
+    };
+    if(this.state.elevatorTime > 399 && this.state.elevatorTime < 701   && this.state.bottom < 510 && this.state.goUp === true) {
+    this.setState({bottom: this.state.bottom +((-0.16)*(this.state.elevatorTime/100)*(this.state.elevatorTime/100))+8.025});
+    console.log(((-0.43)*(this.state.elevatorTime/100)*(this.state.elevatorTime/100))+8.025)
+      var theHeight = this.state.bottom;
+      elevatorHeight = {
+        bottom: theHeight+'px'
+      };
+    };
+    if(this.state.elevatorTime < 301 && this.state.bottom < 510 && this.state.goUp === false) {
+    this.setState({bottom: this.state.bottom -((1/6)*(this.state.elevatorTime/100)*(this.state.elevatorTime/100))});
+      var theHeight = this.state.bottom;
+      elevatorHeight = {
+        bottom: theHeight+'px'
+      };
+    };
+    if(this.state.elevatorTime > 299 && this.state.elevatorTime < 401 && this.state.bottom < 510 && this.state.goUp === false) {
+    this.setState({bottom: this.state.bottom -(this.state.elevatorTime/100) + 1.875});
+      var theHeight = this.state.bottom;
+      elevatorHeight = {
+        bottom: theHeight+'px'
+      };
+    };
+    if(this.state.elevatorTime > 399 && this.state.elevatorTime < 701  && this.state.elevatorTime < 400  && this.state.bottom < 510 && this.state.goUp === false) {
+    this.setState({bottom: this.state.bottom -((-1/6)*(this.state.elevatorTime/100)*(this.state.elevatorTime/100))-3.125});
+      var theHeight = this.state.bottom;
+      elevatorHeight = {
+        bottom: theHeight+'px'
+      };
+    };
+
+
+    if(this.state.elevatorTime === 702) {
+      clearInterval(this.myInterval);
+    }
+  };
+  updateYElevator2(){
+    this.setState({elevatorTime: this.state.elevatorTime + 1})
+    if(this.state.elevatorTime < 850 && this.state.bottom < 510 && this.state.goUp === true) {
+    this.setState({bottom: this.state.bottom + 0.58});
+      var theHeight = this.state.bottom;
+      elevatorHeight = {
+        bottom: theHeight+'px'
+      };
+    };
+    if(this.state.elevatorTime < 850 && this.state.bottom > -10 && this.state.goUp === false) {
+      this.setState({bottom: this.state.bottom - 0.58});
       var theHeight = this.state.bottom;
       elevatorHeight = {
         bottom: theHeight+'px'
       }
     };
-    if(this.state.elevatorTime === 601) {
+    if(this.state.elevatorTime === 860) {
+      clearInterval(this.myInterval);
+    }
+  };
+  updateYElevator3(){
+    this.setState({elevatorTime: this.state.elevatorTime + 1})
+    if(this.state.elevatorTime < 1400 && this.state.bottom < 510 && this.state.goUp === true) {
+    this.setState({bottom: this.state.bottom + 0.36});
+      var theHeight = this.state.bottom;
+      elevatorHeight = {
+        bottom: theHeight+'px'
+      };
+    };
+    if(this.state.elevatorTime < 1400 && this.state.bottom > -10 && this.state.goUp === false) {
+      this.setState({bottom: this.state.bottom - 0.36});
+      var theHeight = this.state.bottom;
+      elevatorHeight = {
+        bottom: theHeight+'px'
+      }
+    };
+    if(this.state.elevatorTime === 1500) {
       clearInterval(this.myInterval);
     }
   };
@@ -74,15 +151,32 @@ class App extends Component {
   gotoSecondFloor(e){
     e.preventDefault();
     this.setState({elevatorTime: 0, goUp: true,})
-    this.myInterval = setInterval(() => this.updateYElevator(), 10);
+    if(this.state.numOfPerson === 1 ){
+      console.log(this.state.numOfPerson)
+      this.myInterval = setInterval(() => this.updateYElevator1(), 10);
+    }
+    if(this.state.numOfPerson === 2 ){
+      this.myInterval = setInterval(() => this.updateYElevator2(), 10);
+    }
+    if(this.state.numOfPerson === 3){
+      this.myInterval = setInterval(() => this.updateYElevator3(), 10);
+    }
     // code to go to second floor
   }
 
   gotoFirstFloor(e){
     e.preventDefault();
     this.setState({elevatorTime: 0, goUp: false,})
-    if(!(this.state.button === 0) ) {
-      this.myInterval = setInterval(() => this.updateYElevator(), 10)
+    if(!(this.state.bottom === 0) ) {
+      if(this.state.numOfPerson ===1 ){
+         this.myInterval = setInterval(() => this.updateYElevator1(), 10)
+      }
+      if(this.state.numOfPerson ===2 ){
+          this.myInterval = setInterval(() => this.updateYElevator2(), 10)
+      }
+      if(this.state.numOfPerson ===3 ){
+           this.myInterval = setInterval(() => this.updateYElevator3(), 10)
+      }
     };
     //code to go to first floor
   }
@@ -90,18 +184,24 @@ class App extends Component {
     handleOnePerson(e){
       e.preventDefault();
       this.setState({numOfPerson: 1});
+      console.log(this.state.numOfPerson)
+
       return(   <OnePersonElevator />
       )
     }
     handleTwoPerson(e){
       e.preventDefault();
       this.setState({numOfPerson: 2});
+      console.log(this.state.numOfPerson)
+
       return(   <TwoPersonElevator />
       )
     }
     handleThreePerson(e){
       e.preventDefault();
       this.setState({numOfPerson: 3});
+      console.log(this.state.numOfPerson)
+
       return(   <ThreePersonElevator />
       )
     }
@@ -113,6 +213,7 @@ class App extends Component {
       <br/>
         <div className="BuildingContainer">
           <img className="Building" src={building}/>
+            <img className="Elevator" style={elevatorHeight} src={elevator2}/>
         </div>
         <div className="Form1">
           <button class="button" onClick={(e) => this.handleOnePerson(e)}> One big boy</button>
